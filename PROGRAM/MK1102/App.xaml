@@ -1,0 +1,9 @@
+﻿<Application x:Class="MK1102.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:MK1102"
+             StartupUri="MK1102_Form01.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

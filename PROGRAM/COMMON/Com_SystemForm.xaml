@@ -1,0 +1,122 @@
+﻿<Window x:Class="Com_SystemForm.xaml"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Com_SystemForm"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1020" Width="1920" FontSize="20" Background="#FF5CD39D">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="724"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+
+        <UniformGrid Grid.ColumnSpan="2" Columns="3" >
+            <UniformGrid Columns="4">
+                <Button x:Name="BtnF01" Content="F01:検索" FontSize="24" Visibility="Visible" Click="Search_Click" />
+                <Button x:Name="BtnF02" Content="F02:検索クリア" FontSize="24" Visibility="Visible" />
+                <Button x:Name="BtnF03" Content="F03:詳細クリア" FontSize="24" Visibility="Visible"/>
+                <Button x:Name="BtnF04" Content="F04:" FontSize="24" Visibility="Hidden"/>
+            </UniformGrid>
+            <UniformGrid Columns="4">
+                <Button x:Name="BtnF05" Content="F05:新規登録" FontSize="24" Visibility="Visible" />
+                <Button x:Name="BtnF06" Content="F06:更新" FontSize="24" Visibility="Visible" />
+                <Button x:Name="BtnF07" Content="F07:" FontSize="24" Visibility="Hidden" />
+                <Button x:Name="BtnF08" Content="F08:削除" FontSize="24"  Visibility="Visible"/>
+            </UniformGrid>
+            <UniformGrid Columns="4">
+                <Button x:Name="BtnF09" Content="F09:" FontSize="24" Visibility="Hidden" />
+                <Button x:Name="BtnF10" Content="F10:" FontSize="24" Visibility="Hidden" />
+                <Button x:Name="BtnF11" Content="F11:" FontSize="24" Visibility="Hidden" />
+                <Button x:Name="BtnF12" Content="F12:終了" FontSize="24" Visibility="Visible"/>
+            </UniformGrid>
+        </UniformGrid>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Label Content="資材マスタメンテ画面"  HorizontalContentAlignment="Center" FontSize="24" />
+        </Grid>
+
+        <GroupBox Header="エラーメッセージ" Grid.ColumnSpan="2" Grid.Row="3" Margin="0,1,0,1" BorderBrush="Black">
+            <Label Margin="10,0,1,0" Height="37" RenderTransformOrigin="0.5,0.5" Content="{Binding AppMessage}">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="2.936"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-0.949"/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+        </GroupBox>
+
+        <!-- 検索条件と検索結果 -->
+        <Grid Grid.Row="2" Margin="2,2,2,2" Background="#FFBA3FDE">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="225"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <GroupBox Header="検索条件" Margin="2,2,2,2" Background="#FFF3DF14" FontSize="24" >
+                <StackPanel>
+                    <Label Content="資材コード" Margin="3,1,3,1"/>
+                    <TextBox Text="{Binding SearchMaterialCode}" TextWrapping="Wrap" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" VerticalAlignment="Top" VerticalScrollBarVisibility="Hidden" Margin="3,1,3,1"/>
+
+                    <Label Content="品名" Margin="3,1,3,1"/>
+                    <TextBox Text="{Binding SearchHinmei}" TextWrapping="Wrap" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" VerticalAlignment="Top" VerticalScrollBarVisibility="Hidden" Margin="3,1,3,1"/>
+
+                </StackPanel>
+            </GroupBox>
+            <DataGrid Grid.Row="1"  ItemsSource="{Binding MaterialInfo}" Margin="3,3,3,10" FrozenColumnCount="1"  AutoGenerateColumns="False" CanUserAddRows="False" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="資材コード" Binding="{Binding material_code}" Width="250">
+                        <DataGridColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="Background" Value="Blue"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="FontSize" Value="24"/>
+                            </Style>
+                        </DataGridColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="品名" Binding="{Binding name}"  CanUserResize="false"/>
+                    <DataGridTextColumn Header="型名" Binding="{Binding type_name}"  CanUserResize="false"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <!-- 詳細表示 -->
+        <GroupBox Grid.Column="1" Header="詳細" Grid.Row="2" Margin="2,2,2,2" Background="#FFEEBF5C" FontSize="24" >
+            <Grid>
+                <StackPanel Grid.Row="0" Margin="2,2,2,2" >
+                    <Label Content="資材コード" Margin="3,1,3,1"/>
+                    <TextBox Text="XXXXXXXXX1XXXXXXXXX2XXXXXXXXX3XXXXXXXXX4" TextWrapping="Wrap" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" VerticalAlignment="Top" VerticalScrollBarVisibility="Hidden" Margin="3,1,3,1"/>
+                    <Label Content="品名"/>
+                    <TextBox Text="XXXXXXXXX1XXXXXXXXX2XXXXXXXXX3XXXXXXXXX4" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Hidden"/>
+                    <Label Content="単位"/>
+                    <StackPanel Orientation=" Horizontal ">
+                        <TextBox Text="XXXX" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Hidden" Width="111"/>
+                        <Label Content="単位コード名称"/>
+                    </StackPanel>
+                    <Label Content="型名"/>
+                    <TextBox Text="XXXXXXXXX1XXXXXXXXX2XXXXXXXXX3XXXXXXXXX4" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Hidden"/>
+                    <Label Content="規格・仕様"/>
+                    <TextBox Text="XXXXXXXXX1XXXXXXXXX2XXXXXXXXX3XXXXXXXXX4" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Hidden"/>
+                    <Label Content="備考"/>
+                    <RichTextBox Height="76">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text="XXXXXXXXX1"/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</Window>

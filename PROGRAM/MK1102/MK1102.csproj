@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\COMMON\bindingClass.cs" Link="COMMON\bindingClass.cs" />
+    <Compile Include="..\COMMON\Com01.cs" Link="COMMON\Com01.cs" />
+    <Compile Include="..\COMMON\Com02_SQL.cs" Link="COMMON\Com02_SQL.cs" />
+    <Compile Include="..\COMMON\SqlServer.cs" Link="COMMON\SqlServer.cs" />
+    <Compile Include="..\COMMON\SystemInfo.cs" Link="COMMON\SystemInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="COMMON\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Prism.Wpf" Version="7.2.0.1422" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MK1101": {
+      "commandName": "Project",
+      "commandLineArgs": "kigyo_code==mk3202"
+    }
+  }
+}
